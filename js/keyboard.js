@@ -23,6 +23,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+// exports the key changes as directions
 export function getKeyDirection() {
   prevKeyDirection = keyDirection;
   return keyDirection;
