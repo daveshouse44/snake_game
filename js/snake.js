@@ -18,6 +18,11 @@ export function update() {
   snakeBody[0].y += keyDirection.y;
 }
 
+// determines where head of snake is
+export function getSnakeHead() {
+  return snakeBody[0];
+}
+
 // renders snake to game surface as html elements
 export function render(gameSurface) {
   snakeBody.forEach((segment) => {
@@ -34,11 +39,17 @@ export function growSnake(quantity) {
   newSegments += quantity;
 }
 
-// determines if any part of snake is touching food
-export function snakeEats(coordinate) {
-  return snakeBody.some((segment) => {
+// determines if any part of snake is touching food or self
+export function contactSnake(coordinate, { ignoreHead = false } = {}) {
+  return snakeBody.some((segment, index) => {
+    if (ignoreHead && index === 0) return false;
     return equalCoordinates(segment, coordinate);
   });
+}
+
+// determines if snake has or has not overlapped
+export function snakeOverlap() {
+  return contactSnake(snakeBody[0], { ignoreHead: true });
 }
 
 // determines if snake segment and food coordinates match

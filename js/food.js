@@ -1,5 +1,5 @@
-import { snakeEats, growSnake } from "./snake.js";
-import { randomGridCoordinate } from "./grid.js";
+import { contactSnake, growSnake } from "./snake.js";
+import { randomGridCoordinate } from "./surface.js";
 
 // food start variables and constants
 let food = getRandomFoodCoordinate();
@@ -7,7 +7,7 @@ const growRate = 1;
 
 // updates snake body when eats food
 export function update() {
-  if (snakeEats(food)) {
+  if (contactSnake(food)) {
     growSnake(growRate);
     food = getRandomFoodCoordinate();
   }
@@ -25,7 +25,7 @@ export function render(gameSurface) {
 // randomize food positon where it cannot overlap snake
 function getRandomFoodCoordinate() {
   let newFoodCoordinate;
-  while (newFoodCoordinate == null || snakeEats(newFoodCoordinate)) {
+  while (newFoodCoordinate == null || contactSnake(newFoodCoordinate)) {
     newFoodCoordinate = randomGridCoordinate();
   }
   return newFoodCoordinate;
