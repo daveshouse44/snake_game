@@ -25,5 +25,6 @@ function update() {
 }
 
 function render() {
+  gameSurface.innerHTML = "";
   renderSnake(gameSurface);
 }
