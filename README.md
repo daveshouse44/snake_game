@@ -20,7 +20,7 @@ Practicing some JavaScript game logic with this project.
 
 ## Link
 
-[Check out this App here!](https://daveshouse44.github.io/react_portfolio/)
+[Check out this App here!](https://daveshouse44.github.io/snake_game/)
 
 ## Screenshot
 
