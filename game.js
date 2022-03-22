@@ -17,7 +17,7 @@ const gameSurface = document.getElementById("game-surface");
 // game loop
 function main(currentTime) {
   if (gameOver) {
-    if (confirm("You lost!  Press OK to restart.")) {
+    if (confirm("You lost! 🐍💀\nPress OK to restart.")) {
       window.location.reload();
     }
     return;
