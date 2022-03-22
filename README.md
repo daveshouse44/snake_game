@@ -24,7 +24,7 @@ Practicing some JavaScript game logic with this project.
 
 ## Screenshot
 
-![Image of main page application](./assets/snake_screenshot.gif)
+![Image of main page application](./images/snake_screenshot.gif)
 
 ## Technologies-Used
 
