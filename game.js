@@ -17,7 +17,10 @@ const gameSurface = document.getElementById("game-surface");
 // game loop
 function main(currentTime) {
   if (gameOver) {
-    return alert("You lose!");
+    if (confirm("You lost!  Press OK to restart.")) {
+      window.location = "/";
+    }
+    return;
   }
   window.requestAnimationFrame(main);
   const secsSincePrevRender = (currentTime - prevRender) / 1000;
