@@ -18,7 +18,7 @@ const gameSurface = document.getElementById("game-surface");
 function main(currentTime) {
   if (gameOver) {
     if (confirm("You lost!  Press OK to restart.")) {
-      window.location = "/";
+      window.location.reload();
     }
     return;
   }
