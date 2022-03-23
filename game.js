@@ -12,12 +12,18 @@ import { outsideSurface } from "./js/surface.js";
 
 let prevRender = 0;
 let gameOver = false;
+let bodyCount = document.getElementsByClassName("snake");
 const gameSurface = document.getElementById("game-surface");
 
 // game loop
 function main(currentTime) {
+  let gameScore = bodyCount.length - 1;
   if (gameOver) {
-    if (confirm("You lost! 🐍💀\nPress OK to restart.")) {
+    if (
+      confirm(
+        `You lost! 🐍💀\nYour score was ${gameScore}!\nPress OK to restart.`
+      )
+    ) {
       window.location.reload();
     }
     return;

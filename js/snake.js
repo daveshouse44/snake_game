@@ -1,7 +1,7 @@
 import { getKeyDirection } from "./keyboard.js";
 
 // constants of start of game
-export const snakeSpeed = 5;
+export const snakeSpeed = 7;
 const snakeBody = [{ x: 11, y: 11 }];
 let newSegments = 0;
 
