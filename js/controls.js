@@ -24,43 +24,60 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-window.addEventListener("touchstart", (e) => {
-  startTouchPosition.x = e.touches[0].clientX;
-  startTouchPosition.y = e.touches[0].clientY;
-});
+window.addEventListener(
+  "touchstart",
+  (e) => {
+    startTouchPosition.x = e.touches[0].clientX;
+    startTouchPosition.y = e.touches[0].clientY;
+  },
+  { passive: false }
+);
 
-window.addEventListener("touchmove", (e) => {
-  let deltaX = e.touches[0].clientX - startTouchPosition.x;
-  let deltaY = e.touches[0].clientY - startTouchPosition.y;
+window.addEventListener(
+  "touchmove",
+  (e) => {
+    // Get the game surface element
+    const gameSurface = document.getElementById("game-surface");
 
-  // Determine the direction of the swipe
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe
-    if (deltaX > 0) {
-      // Swipe to the right
-      if (prevKeyDirection.x !== 0) return;
-      keyDirection = { x: 1, y: 0 };
-    } else {
-      // Swipe to the left
-      if (prevKeyDirection.x !== 0) return;
-      keyDirection = { x: -1, y: 0 };
+    // Check if the touch is within the game surface
+    if (gameSurface.contains(e.target)) {
+      // Prevent scrolling
+      e.preventDefault();
     }
-  } else {
-    // Vertical swipe
-    if (deltaY > 0) {
-      // Swipe downwards
-      if (prevKeyDirection.y !== 0) return;
-      keyDirection = { x: 0, y: 1 };
-    } else {
-      // Swipe upwards
-      if (prevKeyDirection.y !== 0) return;
-      keyDirection = { x: 0, y: -1 };
-    }
-  }
 
-  // Prevent the default action to stop scrolling when swiping
-  e.preventDefault();
-});
+    let deltaX = e.touches[0].clientX - startTouchPosition.x;
+    let deltaY = e.touches[0].clientY - startTouchPosition.y;
+
+    // Determine the direction of the swipe
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (deltaX > 0) {
+        // Swipe to the right
+        if (prevKeyDirection.x !== 0) return;
+        keyDirection = { x: 1, y: 0 };
+      } else {
+        // Swipe to the left
+        if (prevKeyDirection.x !== 0) return;
+        keyDirection = { x: -1, y: 0 };
+      }
+    } else {
+      // Vertical swipe
+      if (deltaY > 0) {
+        // Swipe downwards
+        if (prevKeyDirection.y !== 0) return;
+        keyDirection = { x: 0, y: 1 };
+      } else {
+        // Swipe upwards
+        if (prevKeyDirection.y !== 0) return;
+        keyDirection = { x: 0, y: -1 };
+      }
+    }
+
+    // Prevent the default action to stop scrolling when swiping
+    e.preventDefault();
+  },
+  { passive: false }
+);
 
 // exports the key changes as directions
 export function getKeyDirection() {
