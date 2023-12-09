@@ -1,4 +1,4 @@
-import { getKeyDirection } from "./keyboard.js";
+import { getKeyDirection } from "./controls.js";
 
 // constants of start of game
 export const snakeSpeed = 7;
